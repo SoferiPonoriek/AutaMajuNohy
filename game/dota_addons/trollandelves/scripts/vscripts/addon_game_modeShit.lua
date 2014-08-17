@@ -1,4 +1,4 @@
-if CAddonTemplateGameMode == nil then
+--[[if CAddonTemplateGameMode == nil then
     CAddonTemplateGameMode = class({})
 end
 
@@ -38,4 +38,4 @@ function CAddonTemplateGameMode:OnPlayerConnectFull(keys)
     local player = PlayerInstanceFromIndex(keys.index + 1)
     print("Creating hero.")
     local hero = CreateHeroForPlayer('npc_dota_hero_crystal_maiden', player)
-end
+end]]
