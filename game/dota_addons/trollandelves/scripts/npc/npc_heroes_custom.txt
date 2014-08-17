@@ -1,0 +1,98 @@
+// Dota Heroes File
+// NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// True Elf
+	//=================================================================================================================
+	"npc_hero_elf"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_invoker"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+
+		"Ability1"					"antimage_blink"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					"empty_spell"
+		"Ability5"					"empty_spell"
+		"Ability6"					"empty_spell"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"1"										// Damage range min.
+		"AttackDamageMax"			"1"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
+		"AttackRate"				"1.7"									// Speed of attack.
+		"AttackAnimationPoint"		"0.75"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"ranged_hero"							// Particle system model for projectile.
+		"ProjectileSpeed"			"900"									// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"1"										// Base strength
+		"AttributeStrengthGain"		"0"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"1"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"1"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+
+		// Movement
+		//------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"
+		"MovementTurnRate"			"0.5"
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"81"									// Base health.
+		"StatusHealthRegen"			"0.25"									// Health regeneration rate.
+		"StatusMana"				"188"										// Base mana.
+		"StatusManaRegen"			"2.94"									// Mana regeneration rate.
+
+		// Vision
+		//------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		//Inventory
+		"HasInventory"				"0"
+	}
+
+
+	//=================================================================================================================
+	// Crystal Maiden
+	//=================================================================================================================
+	"npc_hero_crystal_maiden"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_crystal_maiden"			// Hero to override
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+	}
+
+}
