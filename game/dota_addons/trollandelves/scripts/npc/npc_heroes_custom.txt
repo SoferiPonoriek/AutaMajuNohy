@@ -19,7 +19,7 @@
 		"Ability1"					"antimage_blink"
 		"Ability2"					""
 		"Ability3"					""
-		"Ability4"					"empty_spell"
+		"Ability4"					""
 		"Ability5"					"empty_spell"
 		"Ability6"					"empty_spell"
 
