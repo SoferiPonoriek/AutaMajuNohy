@@ -23,6 +23,23 @@
 		"Ability5"					"death_prophet_silence"
 		"Ability6"					"buildings"
 
+			// Buildings
+			//---------------------------------------------------------------------------------------------------------
+			"Ability7"					"build_rock"
+			"Ability8"					"build_house"
+			"Ability9"					"build_tower"
+			"Ability10"					"build_castle"
+			"Ability11"					"build_guild"
+			"Ability12"					"build_tree"
+			"Ability13"					"build_lab"
+			"Ability14"					"build_true_tower"
+
+			// Navigation
+			//---------------------------------------------------------------------------------------------------------
+			"Ability15"					"navigation_back"
+			"Ability16"					"navigation_right"
+			"Ability17"					"navigation_left"
+
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"0"
