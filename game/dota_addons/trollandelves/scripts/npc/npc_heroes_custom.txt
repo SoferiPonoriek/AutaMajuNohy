@@ -17,11 +17,11 @@
 		"AbilityLayout"				"6"
 
 		"Ability1"					"antimage_blink"
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
-		"Ability5"					"empty_spell"
-		"Ability6"					"empty_spell"
+		"Ability2"					"repair"
+		"Ability3"					"shield"
+		"Ability4"					"lone_druid_spirit_bear_entangle"
+		"Ability5"					"death_prophet_silence"
+		"Ability6"					"buildings"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------

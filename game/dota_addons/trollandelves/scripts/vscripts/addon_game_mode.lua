@@ -45,12 +45,14 @@ end
 
 -- Attach client side hero effects on spawning players
 if spawnedUnit:IsRealHero() then
-print( "nastavuji ability" )
+print( "setting up abilities" )
 spawnedUnit:FindAbilityByName("antimage_blink"):SetLevel(1)
-spawnedUnit:AddAbility("empty_spell")
-spawnedUnit:AddAbility("empty_spell")
-spawnedUnit:AddAbility("empty_spell")
-spawnedUnit:AddAbility("empty_spell")
+spawnedUnit:FindAbilityByName("repair"):SetLevel(1)
+spawnedUnit:FindAbilityByName("shield"):SetLevel(1)
+spawnedUnit:FindAbilityByName("lone_druid_spirit_bear_entangle"):SetLevel(1)
+spawnedUnit:FindAbilityByName("death_prophet_silence"):SetLevel(1)
+spawnedUnit:FindAbilityByName("buildings"):SetLevel(1)
+
 spawnedUnit:SetAbilityPoints(0)
 
 -- self:_SpawnHeroClientEffects( spawnedUnit, nPlayerID )
