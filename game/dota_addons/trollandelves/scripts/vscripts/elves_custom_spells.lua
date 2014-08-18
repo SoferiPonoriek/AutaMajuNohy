@@ -74,8 +74,7 @@ function TurnLeft( keys )
 end
 
 function BackToSpells( keys )
-	if keys.caster:HasAbility("build_rock")
-	then
+	-- there should be if so just one of the abilities would be removed but with if it was not working and without it is so GTFO
 		keys.caster:RemoveAbility("build_rock")
 		keys.caster:RemoveAbility("build_house")
 		keys.caster:RemoveAbility("build_tower")
@@ -83,7 +82,6 @@ function BackToSpells( keys )
 		keys.caster:RemoveAbility("navigation_right")
 		keys.caster:RemoveAbility("navigation_back")
 		print("frist page of buildings removed")
-	else
 		keys.caster:RemoveAbility("build_guild")
 		keys.caster:RemoveAbility("build_tree")
 		keys.caster:RemoveAbility("build_lab")
@@ -91,7 +89,6 @@ function BackToSpells( keys )
 		keys.caster:RemoveAbility("navigation_left")
 		keys.caster:RemoveAbility("navigation_back")
 		print("second page of buildings removed")
-	end
 
 	keys.caster:AddAbility("antimage_blink")
 	keys.caster:AddAbility("repair")
