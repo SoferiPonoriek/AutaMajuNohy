@@ -1,3 +1,5 @@
+require('buildinghelper')
+
 if CTrollAndElvesGameMode == nil then
 	CTrollAndElvesGameMode = class({})
 end
@@ -20,11 +22,30 @@ end
 
 function CTrollAndElvesGameMode:InitGameMode()
 	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( CTrollAndElvesGameMode, "OnNPCSpawned" ), self )
+	Convars:RegisterCommand( "buildinghelper", Dynamic_Wrap(CTrollAndElvesGameMode, 'DisplayBuildingGrids'), "blah", 0 )
 	GameRules:SetSameHeroSelectionEnabled(true)
 	GameRules:SetHeroSelectionTime( 30 )
 	GameRules:SetPreGameTime( 30 )
 	print( "Template addon is loaded." )
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+end
+
+
+function CTrollAndElvesGameMode:DisplayBuildingGrids()
+  print( '******* Displaying Building Grids ***************' )
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      -- Do something here for the player who called this command
+		for i,v in ipairs(BUILDING_SQUARES) do
+			for i2,v2 in ipairs(v) do
+				BuildingHelper:PrintSquareFromCenterPoint(v2)
+			end
+		end
+    end
+  end
+  print( '*********************************************' )
 end
 
 -- Evaluate the state of the game
