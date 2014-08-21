@@ -5,6 +5,7 @@ if CTrollAndElvesGameMode == nil then
 end
 
 function Precache( context )
+	PrecacheResource( "model", "models/props_rock/badside_rocks005.vmdl", context )
 	--[[
 		Precache things we know we'll use.  Possible file types include (but not limited to):
 			PrecacheResource( "model", "*.vmdl", context )
@@ -21,16 +22,54 @@ function Activate()
 end
 
 function CTrollAndElvesGameMode:InitGameMode()
+	-- CUSTOM COMMANDS
+	Convars:RegisterCommand( "t&e_buildinghelper", Dynamic_Wrap(CTrollAndElvesGameMode, 'DisplayBuildingGrids'), "It will show grid around buildings.", 0 )
+	Convars:RegisterCommand( "t&e_swag", Dynamic_Wrap(CTrollAndElvesGameMode, 'SWAG'), "SWAG", 0 )
+
+	BuildingHelper:BlockGridNavSquares(16384)
+
 	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( CTrollAndElvesGameMode, "OnNPCSpawned" ), self )
-	Convars:RegisterCommand( "buildinghelper", Dynamic_Wrap(CTrollAndElvesGameMode, 'DisplayBuildingGrids'), "blah", 0 )
+	print( "Template addon is loaded." )
+	--Setting up game rules
+	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 	GameRules:SetSameHeroSelectionEnabled(true)
 	GameRules:SetHeroSelectionTime( 30 )
 	GameRules:SetPreGameTime( 30 )
-	print( "Template addon is loaded." )
-	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 end
 
+-- Evaluate the state of the game
+function CTrollAndElvesGameMode:OnThink()
+	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		--print( "Template addon script is running." )
+	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+		return nil
+	end
+	return 1
+end
 
+function CTrollAndElvesGameMode:OnNPCSpawned( event )
+	local spawnedUnit = EntIndexToHScript( event.entindex )
+	if not spawnedUnit or spawnedUnit:IsPhantom() then
+	return
+	end
+
+	-- Attach client side hero effects on spawning players
+	if spawnedUnit:IsRealHero() then
+
+		print( "setting up abilities" )
+		spawnedUnit:FindAbilityByName("antimage_blink"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("repair"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("shield"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("lone_druid_spirit_bear_entangle"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("death_prophet_silence"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("buildings"):SetLevel(1)
+
+		spawnedUnit:SetAbilityPoints(0)
+	-- self:_SpawnHeroClientEffects( spawnedUnit, nPlayerID )
+	end
+end
+
+-- CUSTOM FUNCTIONS WORKING WITH COMMANDS FROM CONSOLE
 function CTrollAndElvesGameMode:DisplayBuildingGrids()
   print( '******* Displaying Building Grids ***************' )
   local cmdPlayer = Convars:GetCommandClient()
@@ -45,38 +84,8 @@ function CTrollAndElvesGameMode:DisplayBuildingGrids()
 		end
     end
   end
-  print( '*********************************************' )
 end
 
--- Evaluate the state of the game
-function CTrollAndElvesGameMode:OnThink()
-	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		--print( "Template addon script is running." )
-	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
-		return nil
-	end
-	return 1
-end
-
-function CTrollAndElvesGameMode:OnNPCSpawned( event )
-local spawnedUnit = EntIndexToHScript( event.entindex )
-if not spawnedUnit or spawnedUnit:IsPhantom() then
-return
-end
-
--- Attach client side hero effects on spawning players
-if spawnedUnit:IsRealHero() then
-print( "setting up abilities" )
-spawnedUnit:FindAbilityByName("antimage_blink"):SetLevel(1)
-spawnedUnit:FindAbilityByName("repair"):SetLevel(1)
-spawnedUnit:FindAbilityByName("shield"):SetLevel(1)
-spawnedUnit:FindAbilityByName("lone_druid_spirit_bear_entangle"):SetLevel(1)
-spawnedUnit:FindAbilityByName("death_prophet_silence"):SetLevel(1)
-spawnedUnit:FindAbilityByName("buildings"):SetLevel(1)
-
-spawnedUnit:SetAbilityPoints(0)
-
--- self:_SpawnHeroClientEffects( spawnedUnit, nPlayerID )
-
-end
+function CTrollAndElvesGameMode:SWAG()
+	Say(nil, "SWAG?", false)
 end

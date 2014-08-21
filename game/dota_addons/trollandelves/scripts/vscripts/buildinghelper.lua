@@ -9,7 +9,7 @@ BUILDINGHELPER_THINK = 0.03
 GRIDNAV_SQUARES = {}
 BUILDING_SQUARES = {}
 BH_UNITS = {}
-FORCE_UNITS_AWAY = true
+FORCE_UNITS_AWAY = false
 FIRE_GAME_EVENTS = false
 BH_Z=129
 
@@ -264,7 +264,7 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 			if vOwnersHero ~= nil and vOwnersHero.vPathingMap ~= nil then
 				--print("Checking for jump...")
 				if vOwnersHero.bPathingMapGenerated and tableContains(vOwnersHero.vPathingMap, Vector(x,y,BH_Z)) then
-					--print('Owner jump')
+					print('Owner jump')
 					vOwnersHero.bNeedsToJump=true
 				end
 				for i,unit in ipairs(BH_UNITS) do

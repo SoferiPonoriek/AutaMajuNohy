@@ -16,6 +16,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"HealthBarOffset"			"250"
+		"BoundsHullName"   			"DOTA_HULL_SIZE_TOWER"
 
 		// Armor
 		//----------------------------------------------------------------
