@@ -1,7 +1,7 @@
-require('buildinghelper')
+require('buildings')
 
-if CTrollAndElvesGameMode == nil then
-	CTrollAndElvesGameMode = class({})
+if TrollAndElves == nil then
+	TrollAndElves = class({})
 end
 
 function Precache( context )
@@ -17,18 +17,18 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.TrollAndElves = CTrollAndElvesGameMode()
+	GameRules.TrollAndElves = TrollAndElves()
 	GameRules.TrollAndElves:InitGameMode()
 end
 
-function CTrollAndElvesGameMode:InitGameMode()
+function TrollAndElves:InitGameMode()
 	-- CUSTOM COMMANDS
-	Convars:RegisterCommand( "t&e_buildinghelper", Dynamic_Wrap(CTrollAndElvesGameMode, 'DisplayBuildingGrids'), "It will show grid around buildings.", 0 )
-	Convars:RegisterCommand( "t&e_swag", Dynamic_Wrap(CTrollAndElvesGameMode, 'SWAG'), "SWAG", 0 )
+	Convars:RegisterCommand( "t&e_show_grid", Dynamic_Wrap(TrollAndElves, 'DisplayBuildingGrids'), "It will show grid around buildings.", 0 )
+	Convars:RegisterCommand( "t&e_show_swag", Dynamic_Wrap(TrollAndElves, 'SWAG'), "SWAG", 0 )
 
 	BuildingHelper:BlockGridNavSquares(16384)
 
-	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( CTrollAndElvesGameMode, "OnNPCSpawned" ), self )
+	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( TrollAndElves, "OnNPCSpawned" ), self )
 	print( "Template addon is loaded." )
 	--Setting up game rules
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
@@ -38,7 +38,7 @@ function CTrollAndElvesGameMode:InitGameMode()
 end
 
 -- Evaluate the state of the game
-function CTrollAndElvesGameMode:OnThink()
+function TrollAndElves:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		--print( "Template addon script is running." )
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
@@ -47,7 +47,7 @@ function CTrollAndElvesGameMode:OnThink()
 	return 1
 end
 
-function CTrollAndElvesGameMode:OnNPCSpawned( event )
+function TrollAndElves:OnNPCSpawned( event )
 	local spawnedUnit = EntIndexToHScript( event.entindex )
 	if not spawnedUnit or spawnedUnit:IsPhantom() then
 	return
@@ -60,7 +60,7 @@ function CTrollAndElvesGameMode:OnNPCSpawned( event )
 		spawnedUnit:FindAbilityByName("antimage_blink"):SetLevel(1)
 		spawnedUnit:FindAbilityByName("repair"):SetLevel(1)
 		spawnedUnit:FindAbilityByName("shield"):SetLevel(1)
-		spawnedUnit:FindAbilityByName("lone_druid_spirit_bear_entangle"):SetLevel(1)
+		spawnedUnit:FindAbilityByName("root"):SetLevel(1)
 		spawnedUnit:FindAbilityByName("death_prophet_silence"):SetLevel(1)
 		spawnedUnit:FindAbilityByName("buildings"):SetLevel(1)
 
@@ -70,7 +70,7 @@ function CTrollAndElvesGameMode:OnNPCSpawned( event )
 end
 
 -- CUSTOM FUNCTIONS WORKING WITH COMMANDS FROM CONSOLE
-function CTrollAndElvesGameMode:DisplayBuildingGrids()
+function TrollAndElves:DisplayBuildingGrids()
   print( '******* Displaying Building Grids ***************' )
   local cmdPlayer = Convars:GetCommandClient()
   if cmdPlayer then
@@ -86,6 +86,6 @@ function CTrollAndElvesGameMode:DisplayBuildingGrids()
   end
 end
 
-function CTrollAndElvesGameMode:SWAG()
+function TrollAndElves:SWAG()
 	Say(nil, "SWAG?", false)
 end

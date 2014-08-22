@@ -5,7 +5,7 @@ Credits to Ash47 and BMD for the timer code.
 Please give credit in your work if you use this. Thanks, and happy modding!
 ]]
 
-BUILDINGHELPER_THINK = 0.03
+BUILDINGHELPER_THINK = 0.04--0.03
 GRIDNAV_SQUARES = {}
 BUILDING_SQUARES = {}
 BH_UNITS = {}
@@ -290,7 +290,6 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 end
 
 function BuildingHelper:AddBuilding(building)
-	building.BuildingHelperTimer = self.timers[building.BuildingHelperTimer]
 	building.bUpdatingHealth = false
 	building.nBuildTime = 1
 	building.fTimeBuildingCompleted = GameRules:GetGameTime()+1

@@ -15,8 +15,17 @@
 		"BaseClass"					"npc_dota_building"
 		"SoundSet"					"n_creep_Ranged"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"HealthBarOffset"			"250"
 		"BoundsHullName"   			"DOTA_HULL_SIZE_TOWER"
+		"Level"						"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+
+		"Ability1"					"empty"//one point upgrade
+		"Ability2"					"empty1"//upgrade to ultrasonic wall
+		"Ability3"					"repair"//upgrade to endgame wall
+		"Ability4"					"buildings_destroy"//destroy
 
 		// Armor
 		//----------------------------------------------------------------
@@ -28,37 +37,37 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"25"
-		"BountyGoldMin"				"352"
-		"BountyGoldMax"				"370"
+		"BountyXP"					"0"
+		"BountyGoldMin"				"9"
+		"BountyGoldMax"				"9"
 
 		// Bounds
 		//----------------------------------------------------------------
 		"RingRadius"				"157"
+		"HealthBarOffset"			"50"
 
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"MovementSpeed"				"0"			// Speed
-		"MovementTurnRate"			"0"			// Turning rate.
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"1500"		// Base health.
-		"StatusHealthRegen"			"5"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
-		"StatusManaRegen"			"0"			// Mana regeneration rate.
-
+		"StatusHealth"				"50"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_GOODGUYS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BARRACKS"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		
 		// Vision
 		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"900"		// Range of vision during day light.
-		"VisionNighttimeRange"		"600"		// Range of vision at night time.
+		"VisionDaytimeRange"		"1600"
+		"VisionNighttimeRange"		"600"
 	}
 }

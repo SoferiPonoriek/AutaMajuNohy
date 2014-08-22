@@ -21,13 +21,13 @@
 		"Ability1"					"antimage_blink"
 		"Ability2"					"repair"
 		"Ability3"					"shield"
-		"Ability4"					"lone_druid_spirit_bear_entangle"
+		"Ability4"					"root"
 		"Ability5"					"death_prophet_silence"
 		"Ability6"					"buildings"
 
 			// Buildings
 			//---------------------------------------------------------------------------------------------------------
-			"Ability7"					"build_rock"
+			"Ability7"					"build_rock_lvl_1"
 			"Ability8"					"build_house"
 			"Ability9"					"build_tower"
 			"Ability10"					"build_castle"
@@ -73,20 +73,20 @@
 		// Movement
 		//------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"522"
+		"MovementSpeed"				"305"
 		"MovementTurnRate"			"0.5"
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"81"									// Base health.
-		"StatusHealthRegen"			"0.25"									// Health regeneration rate.
+		"StatusHealthRegen"			"1"									// Health regeneration rate.
 		"StatusMana"				"188"										// Base mana.
-		"StatusManaRegen"			"2.94"									// Mana regeneration rate.
+		"StatusManaRegen"			"3"									// Mana regeneration rate.
 
 		// Vision
 		//------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"		"800"
-		"VisionNighttimeRange"		"800"
+		"VisionNighttimeRange"		"600"
 
 		//Inventory
 		"HasInventory"				"0"

@@ -17,6 +17,26 @@
 		"AbilityTextureName"            "rubick_empty1"
 	}
 
+	"empty1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"            "rubick_empty1"
+	}
+
+	"empty2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"            "rubick_empty1"
+	}
+
 	"repair"
 	{
 		// General
@@ -47,14 +67,60 @@
 	}
 
 	"root"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"MaxLevel"						"0"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"holdout_root"
-	}
+    {
+        "precache"
+        {
+            "particle_folder"                       	"particles/units/heroes/hero_lone_druid"
+            "soundfile"                             	"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+        }
+ 
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"										"ability_datadriven"
+        "AbilityBehavior"                               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetTeam"                 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"                 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityTextureName"                    		"lone_druid_spirit_bear_entangle"
+        "MaxLevel"                                      "0"
+ 
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                              "600"
+        "AbilityCastPoint"                              "0.2"
+ 
+        // Damage.
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityDamage"                                 "0"
+ 
+        // Time        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                               "36"
+        "AbilityDuration"                               "%duration"
+ 
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                               "75"
+ 
+        "OnSpellStart"
+        {
+
+            "ApplyModifier"
+            {
+            	"ModifierName"							"modifier_lone_druid_spirit_bear_entangle_effect"
+            	"Duration"								"%duration"
+            	"Target" 								"TARGET"
+            }
+        }
+ 
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                              "FIELD_INTEGER"
+                "duration"                              "5"
+            }
+        }
+    }
 
 	"buildings"
 	{
@@ -83,7 +149,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_custom_spells.lua"
+				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
 				"Function"				"ListBuildings"
 			}
 		}
@@ -93,19 +159,17 @@
 	// BUILDINGS
 	//=================================================================================================================
 
-	"build_rock"
+	"buildings_destroy"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"MaxLevel"						"0"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"holdout_rock"
-		"AOERadius" 					"157"
+		"AbilityTextureName"			"holdout_destroy"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"200"
 		"AbilityCastPoint"				"0"
 
 		// Time		
@@ -121,9 +185,46 @@
 		{
 			"RunScript"
 			{
+				"ScriptFile"			"scripts/vscripts/buildings_rock.lua"
+				"Function"				"Destroy"
+			}
+		}
+	}
+
+	"build_rock_lvl_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_rock"
+		"IsSummoned"					"1"
+		"CanBeDominated"				"0"
+		"AOERadius" 					"157"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"200"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"4"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
 				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/examples.lua"
-				"Function"				"getHardFarmPoint"
+				"ScriptFile"			"scripts/vscripts/buildings_rock.lua"
+				"Function"				"BuildRockLvl1"
 			}
 		}
 	}
@@ -229,7 +330,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_custom_spells.lua"
+				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
 				"Function"				"BackToSpells"
 			}
 		}
@@ -262,7 +363,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_custom_spells.lua"
+				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
 				"Function"				"TurnRight"
 			}
 		}
@@ -295,7 +396,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_custom_spells.lua"
+				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
 				"Function"				"TurnLeft"
 			}
 		}
