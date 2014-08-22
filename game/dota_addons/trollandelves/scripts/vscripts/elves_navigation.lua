@@ -19,6 +19,7 @@ function ListBuildings( keys )
 	keys.caster:FindAbilityByName("navigation_right"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_back"):SetLevel(1)
 	print("frist page of buildings ready")
+	--keys.caster:SetMaxHealth(1)
 end
 
 function TurnRight( keys )
@@ -39,6 +40,7 @@ function TurnRight( keys )
 	keys.caster:FindAbilityByName("build_true_tower"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_left"):SetLevel(1)
 	print("second page of buildings ready")
+	--keys.caster:SetMaxHealth(1)
 end
 
 function TurnLeft( keys )
@@ -59,6 +61,7 @@ function TurnLeft( keys )
 	keys.caster:FindAbilityByName("build_castle"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_right"):SetLevel(1)
 	print("frist page of buildings ready")
+	--keys.caster:SetMaxHealth(1)
 end
 
 function BackToSpells( keys )
@@ -93,4 +96,5 @@ function BackToSpells( keys )
 	keys.caster:FindAbilityByName("death_prophet_silence"):SetLevel(1)
 	keys.caster:FindAbilityByName("buildings"):SetLevel(1)
 	print("spells ready")
+	--keys.caster:SetMaxHealth(1)
 end

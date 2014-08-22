@@ -50,10 +50,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"AttackDamageMin"			"1"										// Damage range min.
-		"AttackDamageMax"			"1"										// Damage range max.
+		"AttackDamageMin"			"4"										// Damage range min.
+		"AttackDamageMax"			"5"										// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
-		"AttackRate"				"1.7"									// Speed of attack.
+		"AttackRate"				"1"									// Speed of attack.
 		"AttackAnimationPoint"		"0.75"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
 		"AttackRange"				"600"									// Range within a target can be attacked.
@@ -74,11 +74,11 @@
 		//------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"				"305"
-		"MovementTurnRate"			"0.5"
+		"MovementTurnRate"			"0.6"
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"81"									// Base health.
+		"StatusHealth"				"1"									// Base health.
 		"StatusHealthRegen"			"1"									// Health regeneration rate.
 		"StatusMana"				"188"										// Base mana.
 		"StatusManaRegen"			"3"									// Mana regeneration rate.
