@@ -1,6 +1,6 @@
 function Destroy( keys )
 	local farm = keys.caster
-	DeepPrintTable(keys.caster)
+	--DeepPrintTable(keys.caster)
 	BuildingHelper:AddBuilding(farm)
 	farm:RemoveBuilding(4, true)
 end
