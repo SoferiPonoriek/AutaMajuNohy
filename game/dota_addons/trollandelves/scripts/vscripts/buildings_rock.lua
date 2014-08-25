@@ -1,8 +1,7 @@
 function Destroy( keys )
-	local farm = keys.caster
+	keys.caster:RemoveBuilding(4, true)
 	--DeepPrintTable(keys.caster)
-	BuildingHelper:AddBuilding(farm)
-	farm:RemoveBuilding(4, true)
+	--BuildingHelper:AddBuilding(farm)
 end
 
 function BuildRockLvl1(keys)
@@ -17,10 +16,9 @@ function BuildRockLvl1(keys)
 		--caster:SetGold(caster:GetGold()-4, false)
 		local farm = CreateUnitByName("building_rock", point, false, nil, nil, caster:GetTeam())
 		BuildingHelper:AddBuilding(farm)
-		farm:UpdateHealth(1,true,.75)--buildTime, ,scale
+		farm:UpdateHealth(1,true,.75)--buildTime, gradual enlargement, scale
 		farm:SetHullRadius(157)
 		farm:SetControllableByPlayer( caster:GetPlayerID(), true )
 		farm:FindAbilityByName("buildings_destroy"):SetLevel(1)
-		farm:FindAbilityByName("repair"):SetLevel(0)
 	end
 end

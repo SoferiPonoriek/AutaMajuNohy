@@ -98,3 +98,27 @@ function BackToSpells( keys )
 	print("spells ready")
 	--keys.caster:SetMaxHealth(1)
 end
+
+function Repair( keys )
+	print("--- Repair ---")
+	caster = keys.caster
+	building = keys.target
+	print("Max HP.: ".. building:GetMaxHealth())
+	print("Reg HP.: ".. building:GetHealthRegen())
+	building:SetBaseHealthRegen(.85)
+	print("after Reg HP.: ".. building:GetHealthRegen())
+	--caster.InterruptChannel()
+
+	-- thinker for checking every sec if unit is not full hp yet if yes call CancelRepair
+end
+
+function CancelRepair( keys )
+	print("--- CancelRepair ---")
+	caster = keys.caster
+	building = keys.target
+	print("Max HP.: ".. building:GetMaxHealth())
+	print("Reg HP.: ".. building:GetHealthRegen())
+	building:SetBaseHealthRegen(0)
+	print("after Reg HP.: ".. building:GetHealthRegen())
+	keys.caster:CastAbilityOnTarget(keys.target, keys.caster:FindAbilityByName("repair"), keys.caster:GetOwner():GetPlayerID())
+end

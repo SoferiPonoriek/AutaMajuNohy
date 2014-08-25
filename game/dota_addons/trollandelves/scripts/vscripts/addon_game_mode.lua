@@ -5,7 +5,6 @@ if TrollAndElves == nil then
 end
 
 function Precache( context )
-	PrecacheResource( "model", "models/props_rock/badside_rocks005.vmdl", context )
 	PrecacheUnitByNameSync("npc_dota_hero_invoker", context)
 	--[[
 		Precache things we know we'll use.  Possible file types include (but not limited to):
@@ -23,11 +22,17 @@ function Activate()
 end
 
 function TrollAndElves:InitGameMode()
+
+	GameMode = GameRules:GetGameModeEntity()
+
 	-- CUSTOM COMMANDS
 	Convars:RegisterCommand( "t&e_show_grid", Dynamic_Wrap(TrollAndElves, 'DisplayBuildingGrids'), "It will show grid around buildings.", 0 )
 	Convars:RegisterCommand( "t&e_show_swag", Dynamic_Wrap(TrollAndElves, 'SWAG'), "SWAG", 0 )
 
 	BuildingHelper:BlockGridNavSquares(16384)
+
+	-- Logs
+	InitLogFile( "logs/t&e.txt","")
 
 	--ListenToGameEvent('player_connect_full', Dynamic_Wrap(TrollAndElves, 'OnPlayerConnectFull'), self)
 	--ListenToGameEvent("player_spawn", Dynamic_Wrap(TrollAndElves, 'PlayerUpdate'), self)
@@ -36,11 +41,8 @@ function TrollAndElves:InitGameMode()
 	print( "Template addon is loaded." )
 	--Setting up game rules
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
-	GameRules:SetSameHeroSelectionEnabled(true)
-	GameRules:SetHeroSelectionTime( 30 )
-	GameRules:SetPreGameTime( 30 )
-	GameRules:SetGoldTickTime( 0 )
-    GameRules:SetGoldPerTick( 0 )
+	GameRules:SetSameHeroSelectionEnabled( true )
+	GameMode:SetBuybackEnabled( false )
 end
 
 -- Evaluate the state of the game
@@ -113,7 +115,6 @@ function TrollAndElves:OnNPCSpawned( keys )
 		spawnedUnit:SetAbilityPoints(0)
 
 		spawnedUnit:SetMaxHealth(1)
-		print("agi = ".. spawnedUnit:GetBaseAgility())
 		print("hp = ".. spawnedUnit:GetMaxHealth())
 		--keys.caster:SetMaxHealth(1)
 	-- self:_SpawnHeroClientEffects( spawnedUnit, nPlayerID )

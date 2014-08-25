@@ -20,7 +20,7 @@
 
 		"Ability1"					"antimage_blink"
 		"Ability2"					"repair"
-		"Ability3"					"shield"
+		"Ability3"					"shield"//"omniknight_guardian_angel"
 		"Ability4"					"root"
 		"Ability5"					"death_prophet_silence"
 		"Ability6"					"buildings"
@@ -49,15 +49,15 @@
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"AttackDamageMin"			"4"										// Damage range min.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"5"										// Damage range min.
 		"AttackDamageMax"			"5"										// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
-		"AttackRate"				"1"									// Speed of attack.
+		"AttackRate"				"1"										// Speed of attack.
 		"AttackAnimationPoint"		"0.75"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
 		"AttackRange"				"600"									// Range within a target can be attacked.
-		"ProjectileModel"			"ranged_hero"							// Particle system model for projectile.
+		"ProjectileModel"			"particles\units\heroes\hero_invoker\invoker_base_attack.vpcf"					// Particle system model for projectile.
 		"ProjectileSpeed"			"900"									// Speed of projectile.
 
 		// Attributes

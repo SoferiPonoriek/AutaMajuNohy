@@ -8,14 +8,19 @@
 	//=================================================================================
 	"building_rock"	
 	{
+		"precache"
+		{
+			"model"					"models/props_rock/badside_rocks005.vmdl"
+		}
+
 		// General
 		//----------------------------------------------------------------
 		"Model"						"models/props_rock/badside_rocks005.vmdl"//"models/rock.vmdl"
 		"MinimapIcon"				"minimap_racks90"
-		"BaseClass"					"npc_dota_building"
+		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"BoundsHullName"   			"DOTA_HULL_SIZE_TOWER"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"Level"						"1"
 
 		// Abilities
@@ -24,25 +29,33 @@
 
 		"Ability1"					"empty"//one point upgrade
 		"Ability2"					"empty1"//upgrade to ultrasonic wall
-		"Ability3"					"repair"//upgrade to endgame wall
+		"Ability3"					"empty2"//upgrade to endgame wall
 		"Ability4"					"buildings_destroy"//destroy
 
 		// Armor
 		//----------------------------------------------------------------
 		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 
 		// Bounty
 		//----------------------------------------------------------------
 		"BountyXP"					"0"
-		"BountyGoldMin"				"9"
-		"BountyGoldMax"				"9"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
 
 		// Bounds
 		//----------------------------------------------------------------
+		"BoundsHullName"   			"DOTA_HULL_SIZE_TOWER"
 		"RingRadius"				"157"
 		"HealthBarOffset"			"50"
 
@@ -58,6 +71,7 @@
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
+
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_GOODGUYS"
