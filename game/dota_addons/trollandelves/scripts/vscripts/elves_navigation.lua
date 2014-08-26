@@ -100,25 +100,28 @@ function BackToSpells( keys )
 end
 
 function Repair( keys )
-	print("--- Repair ---")
 	caster = keys.caster
 	building = keys.target
-	print("Max HP.: ".. building:GetMaxHealth())
-	print("Reg HP.: ".. building:GetHealthRegen())
-	building:SetBaseHealthRegen(.85)
-	print("after Reg HP.: ".. building:GetHealthRegen())
-	--caster.InterruptChannel()
-
-	-- thinker for checking every sec if unit is not full hp yet if yes call CancelRepair
+	print("--- Repair; Regen: " .. building:GetHealthRegen() .. " ---")
+	building:SetBaseHealthRegen( building:GetHealthRegen() + .85 )
+	print( "--- Rapairing " .. building:GetHealthRegen() .. " HP/sec")
 end
 
 function CancelRepair( keys )
-	print("--- CancelRepair ---")
 	caster = keys.caster
 	building = keys.target
-	print("Max HP.: ".. building:GetMaxHealth())
-	print("Reg HP.: ".. building:GetHealthRegen())
-	building:SetBaseHealthRegen(0)
-	print("after Reg HP.: ".. building:GetHealthRegen())
-	keys.caster:CastAbilityOnTarget(keys.target, keys.caster:FindAbilityByName("repair"), keys.caster:GetOwner():GetPlayerID())
+	print( "--- CancelRepair; Regen: " .. building:GetHealthRegen() .. " ---" )
+
+	if building:GetHealthRegen() - .85 < 0 then
+		building:SetBaseHealthRegen( 0 )
+	else
+		building:SetBaseHealthRegen( building:GetHealthRegen() - .85 )
+	end
+
+	-- thinker for checking every sec if unit is not full hp yet if yes call CancelRepair
+	-- temporary fix
+	if building:GetHealth() ~= building:GetMaxHealth() then
+		keys.caster:CastAbilityOnTarget( building, caster:FindAbilityByName( "repair" ), caster:GetOwner():GetPlayerID() )
+	end
+	print( "--- BTN regen: " .. building:GetHealthRegen() )
 end

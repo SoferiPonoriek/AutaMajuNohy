@@ -20,7 +20,6 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"Level"						"1"
 
 		// Abilities
