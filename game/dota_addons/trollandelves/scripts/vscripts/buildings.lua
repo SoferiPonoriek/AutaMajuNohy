@@ -14,7 +14,7 @@ FIRE_GAME_EVENTS = false
 BH_Z=129
 
 if BuildingHelper == nil then
-	print('[BUILDING HELPER] Creating Building Helper')
+	print('[t&e] Creating Building Helper')
 	BuildingHelper = {}
 	BuildingHelper.__index = BuildingHelper
 end
@@ -85,7 +85,7 @@ function BuildingHelper:Think()
 end
 
 function BuildingHelper:HandleEventError(name, event, err)
-  print(err)
+  print( "[t&e] " .. err)
 
   -- Ensure we have data
   name = tostring(name or 'unknown')
@@ -105,7 +105,7 @@ end
 
 function BuildingHelper:CreateTimer(name, args)
   if not args.endTime or not args.callback then
-    print("Invalid timer created: "..name)
+    print("[t&e] Invalid timer created: "..name)
     return
   end
 
@@ -144,7 +144,7 @@ function BuildingHelper:BlockGridNavSquares(nMapLength)
 			end
 		end
 	end
-	print("Total GridNav squares added: " .. #GRIDNAV_SQUARES)
+	print("[t&e] Total GridNav squares added: " .. #GRIDNAV_SQUARES)
 end
 
 function BuildingHelper:SetForceUnitsAway(bForceAway)
@@ -234,7 +234,7 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 		bottomBorderY = centerY-halfSide}
 		
 	if BuildingHelper:IsRectangularAreaBlocked(buildingRect) then
-		print("Building location blocked. Returning -1")
+		print("[t&e] Building location blocked. Returning -1")
 		-- It'd be wise to fire a game event when this returns -1 and use Actionscript to notify the player that the spot is blocked.
 		return -1
 	end
@@ -257,14 +257,14 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 	if tableContains(BH_UNITS, vOwnersHero) then
 		vOwnersHero:GeneratePathingMap()
 	else
-		print("You haven't added the owner as a unit. No pathing map will be generated, and the owner may get stuck after building the building.")
+		print("[t&e] You haven't added the owner as a unit. No pathing map will be generated, and the owner may get stuck after building the building.")
 	end
 	for x=buildingRect.leftBorderX+32,buildingRect.rightBorderX-32,64 do
 		for y=buildingRect.topBorderY-32,buildingRect.bottomBorderY+32,-64 do
 			if vOwnersHero ~= nil and vOwnersHero.vPathingMap ~= nil then
 				--print("Checking for jump...")
 				if vOwnersHero.bPathingMapGenerated and tableContains(vOwnersHero.vPathingMap, Vector(x,y,BH_Z)) then
-					print('Owner jump')
+					print('[t&e] Owner jump')
 					vOwnersHero.bNeedsToJump=true
 				end
 				for i,unit in ipairs(BH_UNITS) do
@@ -273,7 +273,7 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 						if FORCE_UNITS_AWAY then
 							unit.bNeedsToJump=true
 						else
-							print("Building location blocked. Returning -1")
+							print("[t&e] Building location blocked. Returning -1")
 							return -1
 						end
 					end
@@ -285,7 +285,7 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 	end
 	table.insert(BUILDING_SQUARES, closed)
 	--print("Total buildings closed: " .. #BUILDING_SQUARES)
-	print("Successfully added " .. #closed .. " closed squares.")
+	print("[t&e] Successfully added " .. #closed .. " closed squares.")
 	return vBuildingCenter
 end
 
@@ -358,7 +358,7 @@ function BuildingHelper:AddBuilding(building)
 			for y=buildingRect.topBorderY-32,buildingRect.bottomBorderY+32,-64 do
 				for i,v in ipairs(BUILDING_SQUARES) do
 					if tableContains(v, Vector(x,y,BH_Z)) then
-						print("Removing " .. #v .. " squares.")
+						print("[t&e] Removing " .. #v .. " squares.")
 						table.remove(BUILDING_SQUARES, i)
 						if bKill then
 							building:SetAbsOrigin(Vector(center.x,center.y,center.z-200))
