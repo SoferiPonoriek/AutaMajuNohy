@@ -9,6 +9,7 @@ end
 -- Load thingies to cache.
 function Precache( context )
 	PrecacheUnitByNameSync( "npc_dota_hero_invoker", context )
+	PrecacheResource( "model", "models/props_rock/badside_rocks005.vmdl", context )
 end
 
 -- Create GameMode
