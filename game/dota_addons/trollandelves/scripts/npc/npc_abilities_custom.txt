@@ -70,7 +70,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
 				"Function"				"Repair"
 			}
 		}
@@ -79,7 +79,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
 				"Function"				"CancelRepair"
 			}
 		}
@@ -224,8 +224,111 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
 				"Function"				"ListBuildings"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// NAVIGATION
+	//=================================================================================================================
+
+	"navigation_back"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_back"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
+				"Function"				"BackToSpells"
+			}
+		}
+	}
+
+	"navigation_right"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_right"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
+				"Function"				"TurnRight"
+			}
+		}
+	}
+
+	"navigation_left"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_left"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/spells_elves.lua"
+				"Function"				"TurnLeft"
 			}
 		}
 	}
@@ -234,7 +337,7 @@
 	// BUILDINGS
 	//=================================================================================================================
 
-	"buildings_destroy"
+	"buildings_destroy_4"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -260,13 +363,45 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"scripts/vscripts/buildings_rock.lua"
-				"Function"				"Destroy"
+				"ScriptFile"			"scripts/vscripts/secret.lua"
+				"Function"				"Destroy4"
 			}
 		}
 	}
 
-	"build_rock_lvl_1"
+	"buildings_destroy_8"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_destroy"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/secret.lua"
+				"Function"				"Destroy8"
+			}
+		}
+	}
+
+	"build_rock_1"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -299,19 +434,120 @@
 			{
 				"Target"				"POINT"
 				"ScriptFile"			"scripts/vscripts/buildings_rock.lua"
-				"Function"				"BuildRockLvl1"
+				"Function"				"BuildRock1"
 			}
 		}
 	}
 
-	"build_house"
+	"build_rock_2"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_rock"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"8"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/buildings_rock.lua"
+				"Function"				"BuildRock2"
+			}
+		}
+	}
+
+	"build_house_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"MaxLevel"						"0"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"			"holdout_house"
+		"IsSummoned"					"1"
+		"CanBeDominated"				"0"
+		"AOERadius" 					"471"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"200"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/buildings_house.lua"
+				"Function"				"BuildHouse1"
+			}
+		}
+	}
+
+	"build_house_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_house"
+		"IsSummoned"					"1"
+		"CanBeDominated"				"0"
+		"AOERadius" 					"390"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"200"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"50"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/buildings_house.lua"
+				"Function"				"BuildHouse2"
+			}
+		}
 	}
 
 	"build_tower"
@@ -372,108 +608,5 @@
 		"MaxLevel"						"0"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"			"holdout_true_tower"
-	}
-
-	//=================================================================================================================
-	// NAVIGATION
-	//=================================================================================================================
-
-	"navigation_back"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"MaxLevel"						"0"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"holdout_back"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0"
-		"AbilityDuration"				"0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
-				"Function"				"BackToSpells"
-			}
-		}
-	}
-
-	"navigation_right"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"MaxLevel"						"0"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"holdout_right"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0"
-		"AbilityDuration"				"0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
-				"Function"				"TurnRight"
-			}
-		}
-	}
-
-	"navigation_left"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"MaxLevel"						"0"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"holdout_left"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0"
-		"AbilityDuration"				"0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/elves_navigation.lua"
-				"Function"				"TurnLeft"
-			}
-		}
 	}
 }

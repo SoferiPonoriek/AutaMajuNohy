@@ -27,8 +27,8 @@
 
 			// Buildings
 			//---------------------------------------------------------------------------------------------------------
-			"Ability7"					"build_rock_lvl_1"
-			"Ability8"					"build_house"
+			"Ability7"					"build_rock_1"
+			"Ability8"					"build_house_1"
 			"Ability9"					"build_tower"
 			"Ability10"					"build_castle"
 			"Ability11"					"build_guild"
@@ -63,11 +63,11 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"1"										// Base strength
+		"AttributeBaseStrength"		"0"										// Base strength
 		"AttributeStrengthGain"		"0"										// Strength bonus per level.
-		"AttributeBaseIntelligence"	"1"										// Base intelligence
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
 		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
-		"AttributeBaseAgility"		"1"										// Base agility
+		"AttributeBaseAgility"		"0"										// Base agility
 		"AttributeAgilityGain"		"0"										// Agility bonus per level.
 
 		// Movement
@@ -80,7 +80,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"1"									// Base health.
 		"StatusHealthRegen"			"1"									// Health regeneration rate.
-		"StatusMana"				"188"										// Base mana.
+		"StatusMana"				"201"								// Base mana.
 		"StatusManaRegen"			"3"									// Mana regeneration rate.
 
 		// Vision

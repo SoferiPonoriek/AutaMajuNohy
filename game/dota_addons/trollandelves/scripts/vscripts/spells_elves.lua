@@ -1,3 +1,5 @@
+REPAIR_SPEED = 1.15
+
 function ListBuildings( keys )
 	keys.caster:RemoveAbility("antimage_blink")
 	keys.caster:RemoveAbility("repair")
@@ -6,25 +8,24 @@ function ListBuildings( keys )
 	keys.caster:RemoveAbility("death_prophet_silence")
 	keys.caster:RemoveAbility("buildings")
 	print("[t&e] spells removed")
-	keys.caster:AddAbility("build_rock_lvl_1")
-	keys.caster:AddAbility("build_house")
+	keys.caster:AddAbility("build_rock_1")
+	keys.caster:AddAbility("build_house_1")
 	keys.caster:AddAbility("build_tower")
 	keys.caster:AddAbility("build_castle")
 	keys.caster:AddAbility("navigation_right")
 	keys.caster:AddAbility("navigation_back")
-	keys.caster:FindAbilityByName("build_rock_lvl_1"):SetLevel(1)
-	keys.caster:FindAbilityByName("build_house"):SetLevel(1)
+	keys.caster:FindAbilityByName("build_rock_1"):SetLevel(1)
+	keys.caster:FindAbilityByName("build_house_1"):SetLevel(1)
 	keys.caster:FindAbilityByName("build_tower"):SetLevel(1)
 	keys.caster:FindAbilityByName("build_castle"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_right"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_back"):SetLevel(1)
 	print("[t&e] frist page of buildings ready")
-	--keys.caster:SetMaxHealth(1)
 end
 
 function TurnRight( keys )
-	keys.caster:RemoveAbility("build_rock_lvl_1")
-	keys.caster:RemoveAbility("build_house")
+	keys.caster:RemoveAbility("build_rock_1")
+	keys.caster:RemoveAbility("build_house_1")
 	keys.caster:RemoveAbility("build_tower")
 	keys.caster:RemoveAbility("build_castle")
 	keys.caster:RemoveAbility("navigation_right")
@@ -40,7 +41,6 @@ function TurnRight( keys )
 	keys.caster:FindAbilityByName("build_true_tower"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_left"):SetLevel(1)
 	print("[t&e] second page of buildings ready")
-	--keys.caster:SetMaxHealth(1)
 end
 
 function TurnLeft( keys )
@@ -50,24 +50,23 @@ function TurnLeft( keys )
 	keys.caster:RemoveAbility("build_true_tower")
 	keys.caster:RemoveAbility("navigation_left")
 	print("[t&e] second page of buildings removed")
-	keys.caster:AddAbility("build_rock_lvl_1")
-	keys.caster:AddAbility("build_house")
+	keys.caster:AddAbility("build_rock_1")
+	keys.caster:AddAbility("build_house_1")
 	keys.caster:AddAbility("build_tower")
 	keys.caster:AddAbility("build_castle")
 	keys.caster:AddAbility("navigation_right")
-	keys.caster:FindAbilityByName("build_rock_lvl_1"):SetLevel(1)
-	keys.caster:FindAbilityByName("build_house"):SetLevel(1)
+	keys.caster:FindAbilityByName("build_rock_1"):SetLevel(1)
+	keys.caster:FindAbilityByName("build_house_1"):SetLevel(1)
 	keys.caster:FindAbilityByName("build_tower"):SetLevel(1)
 	keys.caster:FindAbilityByName("build_castle"):SetLevel(1)
 	keys.caster:FindAbilityByName("navigation_right"):SetLevel(1)
 	print("[t&e] frist page of buildings ready")
-	--keys.caster:SetMaxHealth(1)
 end
 
 function BackToSpells( keys )
-	if (keys.caster:FindAbilityByName("build_rock_lvl_1"):GetLevel() == 1) then
-		keys.caster:RemoveAbility("build_rock_lvl_1")
-		keys.caster:RemoveAbility("build_house")
+	if (keys.caster:FindAbilityByName("build_rock_1"):GetLevel() == 1) then
+		keys.caster:RemoveAbility("build_rock_1")
+		keys.caster:RemoveAbility("build_house_1")
 		keys.caster:RemoveAbility("build_tower")
 		keys.caster:RemoveAbility("build_castle")
 		keys.caster:RemoveAbility("navigation_right")
@@ -96,14 +95,13 @@ function BackToSpells( keys )
 	keys.caster:FindAbilityByName("death_prophet_silence"):SetLevel(1)
 	keys.caster:FindAbilityByName("buildings"):SetLevel(1)
 	print("[t&e] spells ready")
-	--keys.caster:SetMaxHealth(1)
 end
 
 function Repair( keys )
 	caster = keys.caster
 	building = keys.target
 	-- Set bigger healt regen
-	building:SetBaseHealthRegen( building:GetHealthRegen() + .85 )
+	building:SetBaseHealthRegen( building:GetHealthRegen() + REPAIR_SPEED )
 	-- Create timer that will check hp of building, for each player own
 	Secret:CreateTimer( "repairPlayer" .. caster:GetPlayerID(), {
 		callback = function()
@@ -123,7 +121,7 @@ function CancelRepair( keys )
 	-- Remove timer created in Repair( keys )
 	Secret:RemoveTimer( "repairPlayer" .. caster:GetPlayerID() )
 	-- Make sure that regen of building woudln't be lower then nil
-	if building:GetHealthRegen() - .85 < 0 then
+	if building:GetHealthRegen() - REPAIR_SPEED < 0 then
 		building:SetBaseHealthRegen( 0 )
 	else
 		building:SetBaseHealthRegen( building:GetHealthRegen() - .85 )

@@ -5,7 +5,7 @@ Credits to Ash47 and BMD for the timer code.
 Please give credit in your work if you use this. Thanks, and happy modding!
 ]]
 
-BUILDINGHELPER_THINK = 0.04--0.03
+BUILDINGHELPER_THINK = 0.03
 GRIDNAV_SQUARES = {}
 BUILDING_SQUARES = {}
 BH_UNITS = {}
@@ -327,6 +327,12 @@ function BuildingHelper:AddBuilding(building)
 		building.fTimeBuildingCompleted=GameRules:GetGameTime()+fBuildTime+fBuildTime*.35
 		building.nMaxHealth = building:GetMaxHealth()
 		building.nHealthInterval = building.nMaxHealth*1/(fBuildTime/BUILDINGHELPER_THINK)
+        if building.nHealthInterval < 1 then
+            building.nHealthInterval = 1
+        end
+        if building.nHealthInterval < 2 and building.nHealthInterval > 1 then
+            building.nHealthInterval = 2
+        end
 		building.bUpdatingHealth = true
 		if bScale then
 			building.fMaxScale=fMaxScale
@@ -369,7 +375,7 @@ function BuildingHelper:AddBuilding(building)
 			end
 		end
 	end
-	
+	--[[
 	function building:SetOwner(vOwner)
 		building.vOwner = vOwner
 	end
@@ -377,7 +383,7 @@ function BuildingHelper:AddBuilding(building)
 	function building:GetOwner()
 		return building.vOwner
 	end
-	
+	]]
 	--[[function building:RelocateBuilding(vPoint, nSize)
 		self:AddBuildingToGrid(vPoint, nSize)
 		self:RemoveBuilding(nSize)

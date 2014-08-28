@@ -3,10 +3,10 @@
 {
 	"Version"	"1"
 
-	//=================================================================================	
-	// Rock
 	//=================================================================================
-	"building_rock"	
+	// Rocks
+	//=================================================================================
+	"building_rock_1"
 	{
 		"precache"
 		{
@@ -26,10 +26,10 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
 
-		"Ability1"					"empty"//one point upgrade
-		"Ability2"					"empty1"//upgrade to ultrasonic wall
-		"Ability3"					"empty2"//upgrade to endgame wall
-		"Ability4"					"buildings_destroy"//destroy
+		"Ability1"					"build_rock_2"//one point upgrade
+		"Ability2"					"empty"//upgrade to ultrasonic wall
+		"Ability3"					"empty1"//upgrade to endgame wall
+		"Ability4"					"buildings_destroy_4"//destroy
 
 		// Armor
 		//----------------------------------------------------------------
@@ -67,6 +67,84 @@
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"50"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1600"
+		"VisionNighttimeRange"		"600"
+	}
+
+	"building_house_1"
+	{
+		"precache"
+		{
+			"model"					"models/props_debris/shop_set_seat001.vmdl"
+		}
+
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/props_debris/shop_set_seat001.vmdl"//"models/rock.vmdl"
+		"MinimapIcon"				"minimap_racks90"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Ranged"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"Level"						"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+
+		"Ability1"					"build_house_2"//one point upgrade
+		"Ability2"					"empty"//upgrade to ultrasonic wall
+		"Ability3"					"empty1"//upgrade to endgame wall
+		"Ability4"					"buildings_destroy_8"//destroy
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"5"
+		"MagicalResistance"			"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"   			"DOTA_HULL_SIZE_TOWER"
+		"RingRadius"				"390"
+		"HealthBarOffset"			"100"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"10"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"

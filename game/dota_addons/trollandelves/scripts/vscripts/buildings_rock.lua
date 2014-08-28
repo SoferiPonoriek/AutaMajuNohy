@@ -1,24 +1,27 @@
-function Destroy( keys )
-	keys.caster:RemoveBuilding(4, true)
-	--DeepPrintTable(keys.caster)
-	--BuildingHelper:AddBuilding(farm)
-end
-
-function BuildRockLvl1(keys)
+function BuildRock1( keys )
 	local caster = keys.caster
-	local point = BuildingHelper:AddBuildingToGrid(keys.target_points[1], 4, caster)
+	local point = BuildingHelper:AddBuildingToGrid( keys.target_points[1], 4, caster )
 	if point == -1 then
 		-- Refund the cost.
 		caster:SetGold(caster:GetGold()+4, false)
 		--Fire a game event here and use Actionscript to let the player know he can't place a building at this spot.
 		return
 	else
-		--caster:SetGold(caster:GetGold()-4, false)
-		local farm = CreateUnitByName("building_rock", point, false, nil, nil, caster:GetTeam())
-		BuildingHelper:AddBuilding(farm)
-		farm:UpdateHealth(1,true,.75)--buildTime, gradual enlargement, scale
-		farm:SetHullRadius(157)
-		farm:SetControllableByPlayer( caster:GetPlayerID(), true )
-		farm:FindAbilityByName("buildings_destroy"):SetLevel(1)
+		local rock = CreateUnitByName( "building_rock_1", point, false, nil, nil, caster:GetTeam() )
+		BuildingHelper:AddBuilding( rock )
+		rock:UpdateHealth( 1,true,.75 )--buildTime, gradual enlargement, scale
+		rock:SetHullRadius( 157 )
+		rock:SetOwner( caster )
+		rock:SetControllableByPlayer( caster:GetPlayerID(), true )
+		rock:FindAbilityByName( "build_rock_2" ):SetLevel( 1 )
+		rock:FindAbilityByName( "buildings_destroy_4" ):SetLevel( 1 )
 	end
+end
+
+function BuildRock2( keys )
+	keys.caster:SetUnitName( "building_rock_2" )
+	print ( "[t&e] hell yea " .. keys.caster:GetUnitName() )
+	keys.caster:SetMaxHealth( 70 )
+	keys.caster:SetHealth( keys.caster:GetHealth() + 20 )
+	keys.caster:FindAbilityByName( "build_rock_2" ):SetLevel( 0 )
 end

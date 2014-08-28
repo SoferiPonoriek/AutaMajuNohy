@@ -3,7 +3,7 @@ require( 'buildings' )
 require( 'secret' )
 
 -- Define some (one) thinkerino times
-BASE_THINK = 1
+BASE_THINK = 2
 
 -- Create class/object
 if TrollAndElves == nil then
@@ -14,6 +14,7 @@ end
 function Precache( context )
     PrecacheUnitByNameSync( "npc_dota_hero_invoker", context )
     PrecacheResource( "model", "models/props_rock/badside_rocks005.vmdl", context )
+    PrecacheResource( "model", "models/props_debris/shop_set_seat001.vmdl", context )
 end
 
 -- Create GameMode
@@ -76,9 +77,5 @@ function TrollAndElves:OnNPCSpawned( keys )
     spawnedUnit:FindAbilityByName( "buildings" ):SetLevel( 1 )
     -- Set up it nil ability points cuz why not, right?
     spawnedUnit:SetAbilityPoints( 0 )
-    -- Set unit HP to 1 and then be sad cuz it's not working
-    spawnedUnit:SetMaxHealth( 1 )
-    -- Print it out so you know it is working and error is somwhere else
-    print( "[t&e] --- Spawned unit hp = " .. spawnedUnit:GetMaxHealth() .. " ---" )
     end
 end

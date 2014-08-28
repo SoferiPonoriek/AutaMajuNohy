@@ -158,6 +158,16 @@ function Secret:ShowCenterMessage( msg, dur )
     FireGameEvent("show_center_message",msg)
 end
 
+-- Function to destroy buildings on 1 tale
+function Destroy4( keys )
+    keys.caster:RemoveBuilding( 4, true )
+end
+
+-- Function to destroy buildings on 4 tales
+function Destroy8( keys )
+    keys.caster:RemoveBuilding( 4, true )
+end
+
 -- Functions recting to custome console commands
 function Secret:DisplayBuildingGrids()
     print( "Show me some magic!" )
