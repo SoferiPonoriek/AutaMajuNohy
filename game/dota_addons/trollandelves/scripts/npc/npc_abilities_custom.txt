@@ -401,6 +401,38 @@
 		}
 	}
 
+	"buildings_destroy_8_house"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"0"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"holdout_destroy"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/secret.lua"
+				"Function"				"Destroy8House"
+			}
+		}
+	}
+
 	"build_rock_1"
 	{
 		// General
@@ -488,7 +520,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"200"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0"
 
 		// Time		
@@ -526,7 +558,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"200"
+		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 
 		// Time		

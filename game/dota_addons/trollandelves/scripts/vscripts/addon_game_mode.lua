@@ -69,6 +69,9 @@ function TrollAndElves:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     if spawnedUnit and spawnedUnit:IsRealHero() and false == spawnedUnit:IsPhantom() then
     -- Set up it some cool abilities
+    if spawnedUnit:GetGold() == 230 then
+        spawnedUnit:SetGold(30, false)
+    end
     spawnedUnit:FindAbilityByName( "antimage_blink" ):SetLevel( 1 )
     spawnedUnit:FindAbilityByName( "repair" ):SetLevel( 1 )
     spawnedUnit:FindAbilityByName( "shield" ):SetLevel( 1 )

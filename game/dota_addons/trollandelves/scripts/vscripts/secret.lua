@@ -165,7 +165,18 @@ end
 
 -- Function to destroy buildings on 4 tales
 function Destroy8( keys )
-    keys.caster:RemoveBuilding( 4, true )
+    keys.caster:RemoveBuilding( 8, true )
+end
+
+function Destroy8House( keys )
+    Secret:RemoveTimer( "goldsFromHouse" .. keys.caster:GetPlayerOwnerID() )
+    keys.caster:RemoveBuilding( 8, true )
+end
+
+function Destroy8House1( keys )
+    Secret:RemoveTimer( "goldsFromHouse" .. keys.caster:GetPlayerOwnerID() )
+    keys.caster:GetOwnerEntity():FindAbilityByName( "build_house_1" ):SetLevel( 1 )
+    keys.caster:RemoveBuilding( 8, true )
 end
 
 -- Functions recting to custome console commands
